@@ -1,0 +1,599 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VICMAD Cleaning Services - Sparkle, Shine, Done Right.</title>
+    <!-- Load Tailwind CSS --><script src="https://cdn.tailwindcss.com"></script>
+    <!-- Load Lucide Icons --><script type="module" src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
+    <!-- Configure Tailwind to use custom colors --><script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'vicmad-blue': '#1D4A73',
+                        'vicmad-teal': '#2AA38D',
+                        'vicmad-light': '#E8F5E9',
+                    },
+                    fontFamily: {
+                        inter: ['Inter', 'sans-serif'],
+                    },
+                }
+            }
+        }
+    </script>
+    <style>
+        /* Ensuring smooth scroll behavior for navigation */
+        html {
+            scroll-behavior: smooth;
+        }
+
+        /* --- Custom Keyframe Animations --- */
+        @keyframes pulse-subtle {
+            0%, 100% { transform: scale(1); opacity: 1; }
+            50% { transform: scale(1.02); opacity: 0.95; }
+        }
+        @keyframes bobbing-float {
+            0%, 100% { transform: translateY(0) scale(1.1); }
+            50% { transform: translateY(-5px) scale(1.1); }
+        }
+
+        /* Utility Class for CTA Pulse */
+        .cta-pulse {
+            animation: pulse-subtle 3s ease-in-out infinite;
+        }
+
+        /* Utility Class for WhatsApp Float (NOTE: Class removed from element as requested, but definition remains) */
+        .whatsapp-bob {
+            animation: bobbing-float 4s ease-in-out infinite;
+        }
+        
+        /* --- Scroll Animation Styles --- */
+        
+        /* Standard Fade Up */
+        .fade-in-up {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+        }
+        
+        /* Staggered Fade Up with Rotation for Flair */
+        .fade-in-up-rotate {
+            opacity: 0;
+            transform: translateY(30px) rotate(1deg); /* Slight initial rotation */
+            transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+        }
+
+        /* Activation State */
+        .fade-in-up.animate-active,
+        .fade-in-up-rotate.animate-active {
+            opacity: 1;
+            transform: translateY(0) rotate(0deg); /* Rotate back to normal */
+        }
+    </style>
+</head>
+<body class="font-inter bg-gray-50 text-gray-800">
+
+    <!-- Header & Navigation --><header class="sticky top-0 z-50 bg-white shadow-md">
+        <nav class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex justify-between items-center h-20">
+            <!-- Logo (Further Enlarged: h-16 -> h-20) --><a href="#home" class="flex items-center" aria-label="VICMAD Cleaning Services Home">
+                <img id="main-logo" src="logo.png" alt="VICMAD Cleaning Services Logo" class="h-20 w-auto" onerror="this.onerror=null; this.src='https://placehold.co/150x80/1D4A73/FFFFFF?text=VICMAD+Logo'">
+            </a>
+            
+            <!-- Desktop Navigation --><div class="hidden md:flex space-x-8">
+                <a href="#home" class="text-gray-600 hover:text-vicmad-teal transition duration-150">Home</a>
+                <a href="#services" class="text-gray-600 hover:text-vicmad-teal transition duration-150">Services</a>
+                <a href="#about" class="text-gray-600 hover:text-vicmad-teal transition duration-150">About Us</a>
+                <a href="#contact" class="text-gray-600 hover:text-vicmad-teal transition duration-150">Contacts</a>
+            </div>
+
+            <!-- CTA Button --><a href="#quote" class="hidden md:inline-block bg-vicmad-teal hover:bg-vicmad-blue text-white font-semibold py-2 px-4 rounded-full shadow-lg transition duration-300">
+                Get a Free Quote
+            </a>
+            
+            <!-- Mobile Menu Button --><button id="mobile-menu-button" class="md:hidden p-2 rounded-md text-gray-600 hover:bg-gray-100">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-menu"><line x1="4" x2="20" y1="12" y2="12"/><line x1="4" x2="20" y1="6" y2="6"/><line x1="4" x2="20" y1="18" y2="18"/></svg>
+            </button>
+        </nav>
+
+        <!-- Mobile Menu (Hidden by default) --><div id="mobile-menu" class="hidden md:hidden bg-white shadow-xl absolute w-full pb-4">
+            <div class="flex flex-col space-y-2 px-4">
+                <a href="#home" class="block py-2 text-gray-700 hover:bg-vicmad-light rounded-lg transition duration-150">Home</a>
+                <a href="#services" class="block py-2 text-gray-700 hover:bg-vicmad-light rounded-lg transition duration-150">Services</a>
+                <a href="#about" class="block py-2 text-gray-700 hover:bg-vicmad-light rounded-lg transition duration-150">About Us</a>
+                <a href="#contact" class="block py-2 text-gray-700 hover:bg-vicmad-light rounded-lg transition duration-150">Contacts</a>
+                <a href="#quote" class="block text-center mt-2 bg-vicmad-blue hover:bg-vicmad-teal text-white font-semibold py-2 px-4 rounded-full transition duration-300">
+                    Get a Free Quote
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <!-- 1. Hero Section (with Video Background) --><section id="home" class="relative overflow-hidden py-20 md:py-32 h-screen flex items-center justify-center">
+            <!-- Video Background --><video autoplay loop muted playsinline class="absolute inset-0 w-full h-full object-cover z-0">
+                <source src="background.mp4" type="video/mp4">
+                Your browser does not support the video tag.
+            </video>
+
+            <!-- Dark Overlay for Readability --><div class="absolute inset-0 bg-vicmad-blue opacity-80 z-10"></div>
+
+            <!-- Content (Relative to hold it over the video) --><div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center z-20">
+                <h1 class="text-4xl sm:text-5xl lg:text-6xl font-extrabold text-white leading-tight mb-4 drop-shadow-lg">
+                    The Clean You Can <span class="text-vicmad-teal">Trust</span>.
+                </h1>
+                <p class="text-xl text-gray-100 mb-8 max-w-3xl mx-auto drop-shadow-md">
+                    VICMAD Cleaning Services delivers meticulous cleaning solutions for homes and businesses. Sparkle, Shine, Done Right.
+                </p>
+                <a href="#quote" class="inline-block bg-vicmad-teal hover:bg-white hover:text-vicmad-blue text-white text-lg font-bold py-3 px-8 rounded-full shadow-xl transform hover:scale-105 transition duration-300 cta-pulse">
+                    Book Your First Clean Today
+                </a>
+            </div>
+        </section>
+
+        <!-- 2. Services Section (Updated with 8 comprehensive services) --><section id="services" class="py-16 md:py-24 bg-white">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <h2 class="text-3xl font-bold text-center text-vicmad-blue mb-4 fade-in-up">Our Comprehensive Services</h2>
+                <p class="text-center text-gray-600 mb-12 max-w-3xl mx-auto fade-in-up">
+                    From deep industrial cleaning to routine residential maintenance, we provide a full range of services tailored to your needs.
+                </p>
+
+                <!-- Service Grid (Staggered Animation) --><div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 services-grid-container">
+                    <!-- Service Card 1: Commercial + Industrial Cleaning (UPDATED with large image) --><div class="bg-white rounded-xl shadow-lg hover:shadow-2xl transition duration-300 border border-gray-100 overflow-hidden staggered-item fade-in-up-rotate">
+                        <!-- Image covering the top area -->
+                        <div class="relative w-full h-32">
+                            <!-- FIXED: File name now exactly matches: "Commercial + Industrial Cleaning.jpg" --><img src="Commercial + Industrial Cleaning.jpg" alt="Commercial Industrial Cleaning Icon" class="w-full h-full object-cover" onerror="this.onerror=null; this.src='https://placehold.co/400x128/2AA38D/ffffff?text=Industrial+Cleaning'">
+                        </div>
+                        <!-- Content padded below the image -->
+                        <div class="p-6">
+                            <h3 class="text-xl font-semibold text-vicmad-blue mb-3">Commercial + Industrial Cleaning</h3>
+                            <p class="text-gray-600">
+                                Specialized cleaning and maintenance for offices, retail spaces, and heavy industrial environments.
+                            </p>
+                        </div>
+                    </div>
+
+                    <!-- Service Card 2: Adhoc Deep Cleaning (UPDATED with large JPG image) --><div class="bg-white rounded-xl shadow-lg hover:shadow-2xl transition duration-300 border border-gray-100 overflow-hidden staggered-item fade-in-up-rotate">
+                         <!-- Image covering the top area (matching size of first card) -->
+                        <div class="relative w-full h-32">
+                            <!-- FIXED: File name now exactly matches: "Adhoc Deep Cleaning.jpg" --><img src="Adhoc Deep Cleaning.jpg" alt="Adhoc Deep Cleaning Icon" class="w-full h-full object-cover" onerror="this.onerror=null; this.src='https://placehold.co/400x128/2AA38D/ffffff?text=Deep+Cleaning'">
+                        </div>
+                        <!-- Content padded below the image -->
+                        <div class="p-6">
+                            <h3 class="text-xl font-semibold text-vicmad-blue mb-3">Adhoc Deep Cleaning</h3>
+                            <p class="text-gray-600">
+                                Intensive, one-time deep cleaning services for tough jobs and complete hygiene restoration.
+                            </p>
+                        </div>
+                    </div>
+
+                    <!-- Service Card 3: Window & Carpet Cleaning (UPDATED with large JPG image) --><div class="bg-white rounded-xl shadow-lg hover:shadow-2xl transition duration-300 border border-gray-100 overflow-hidden staggered-item fade-in-up-rotate">
+                         <!-- Image covering the top area (matching size of first card) -->
+                        <div class="relative w-full h-32">
+                            <!-- FIXED: File name now exactly matches: "Window & Carpet Cleaning.jpg" --><img src="Window & Carpet Cleaning.jpg" alt="Window and Carpet Cleaning Icon" class="w-full h-full object-cover" onerror="this.onerror=null; this.src='https://placehold.co/400x128/2AA38D/ffffff?text=Window+%26+Carpet'">
+                        </div>
+                        <!-- Content padded below the image -->
+                        <div class="p-6">
+                            <h3 class="text-xl font-semibold text-vicmad-blue mb-3">Window & Carpet Cleaning</h3>
+                            <p class="text-gray-600">
+                                Professional services including streak-free window cleaning and deep steam extraction for carpets.
+                            </p>
+                        </div>
+                    </div>
+
+                    <!-- Service Card 4: Hygiene & Pest Control (UPDATED with large JPG image) --><div class="bg-white rounded-xl shadow-lg hover:shadow-2xl transition duration-300 border border-gray-100 overflow-hidden staggered-item fade-in-up-rotate">
+                        <!-- Image covering the top area (matching size of first card) -->
+                        <div class="relative w-full h-32">
+                            <!-- FIXED: File name now exactly matches: "Hygiene & Pest Control Services.jpg" --><img src="Hygiene & Pest Control Services.jpg" alt="Hygiene and Pest Control Icon" class="w-full h-full object-cover" onerror="this.onerror=null; this.src='https://placehold.co/400x128/2AA38D/ffffff?text=Hygiene+%26+Pest'">
+                        </div>
+                        <!-- Content padded below the image -->
+                        <div class="p-6">
+                            <h3 class="text-xl font-semibold text-vicmad-blue mb-3">Hygiene & Pest Control Services</h3>
+                            <p class="text-gray-600">
+                            Comprehensive washroom hygiene management combined with effective, discreet pest solutions.
+                        </p>
+                        </div>
+                    </div>
+                    
+                    <!-- Service Card 5: Entrance Matts (UPDATED with large JPG image) --><div class="bg-white rounded-xl shadow-lg hover:shadow-2xl transition duration-300 border border-gray-100 overflow-hidden staggered-item fade-in-up-rotate">
+                        <!-- Image covering the top area (matching size of first card) -->
+                        <div class="relative w-full h-32">
+                            <!-- FIXED: File name now exactly matches: "Entrance Matts.jpg" --><img src="Entrance Matts.jpg" alt="Entrance Matts Icon" class="w-full h-full object-cover" onerror="this.onerror=null; this.src='https://placehold.co/400x128/2AA38D/ffffff?text=Entrance+Matts'">
+                        </div>
+                        <!-- Content padded below the image -->
+                        <div class="p-6">
+                            <h3 class="text-xl font-semibold text-vicmad-blue mb-3">Entrance Matts</h3>
+                            <p class="text-gray-600">
+                                Supply, rental, and scheduled cleaning services for entrance matting to maintain clean first impressions.
+                            </p>
+                        </div>
+                    </div>
+
+                    <!-- Service Card 6: Cleaning Supplies (UPDATED with large JPG image) --><div class="bg-white rounded-xl shadow-lg hover:shadow-2xl transition duration-300 border border-gray-100 overflow-hidden staggered-item fade-in-up-rotate">
+                        <!-- Image covering the top area (matching size of first card) -->
+                        <div class="relative w-full h-32">
+                            <!-- FIXED: File name now exactly matches: "Supplies of Cleaning Materials.jpg" --><img src="Supplies of Cleaning Materials.jpg" alt="Cleaning Supplies Icon" class="w-full h-full object-cover" onerror="this.onerror=null; this.src='https://placehold.co/400x128/2AA38D/ffffff?text=Cleaning+Supplies'">
+                        </div>
+                        <!-- Content padded below the image -->
+                        <div class="p-6">
+                            <h3 class="text-xl font-semibold text-vicmad-blue mb-3">Supplies of Cleaning Materials</h3>
+                            <p class="text-gray-600">
+                                Reliable provision of all necessary cleaning materials and consumables for your facility.
+                            </p>
+                        </div>
+                    </div>
+
+                    <!-- Service Card 7: Garden Services (UPDATED with large JPG image) --><div class="bg-white rounded-xl shadow-lg hover:shadow-2xl transition duration-300 border border-gray-100 overflow-hidden staggered-item fade-in-up-rotate">
+                        <!-- Image covering the top area (matching size of first card) -->
+                        <div class="relative w-full h-32">
+                            <!-- FIXED: File name now exactly matches: "Garden Services.jpg" --><img src="Garden Services.jpg" alt="Garden Services Icon" class="w-full h-full object-cover" onerror="this.onerror=null; this.src='https://placehold.co/400x128/2AA38D/ffffff?text=Garden+Services'">
+                        </div>
+                        <!-- Content padded below the image -->
+                        <div class="p-6">
+                            <h3 class="text-xl font-semibold text-vicmad-blue mb-3">Garden Services</h3>
+                            <p class="text-gray-600">
+                                Essential garden maintenance, including lawn care, trimming, and grounds upkeep for an attractive exterior.
+                            </p>
+                        </div>
+                    </div>
+                    
+                    <!-- Service Card 8: Residential Cleaning (UPDATED with large JPG image) --><div class="bg-white rounded-xl shadow-lg hover:shadow-2xl transition duration-300 border border-gray-100 overflow-hidden staggered-item fade-in-up-rotate">
+                        <!-- Image covering the top area (matching size of first card) -->
+                        <div class="relative w-full h-32">
+                            <!-- FIXED: File name now exactly matches: "Residential Cleaning.jpg" --><img src="Residential Cleaning.jpg" alt="Residential Cleaning Icon" class="w-full h-full object-cover" onerror="this.onerror=null; this.src='https://placehold.co/400x128/2AA38D/ffffff?text=Residential+Cleaning'">
+                        </div>
+                        <!-- Content padded below the image -->
+                        <div class="p-6">
+                            <h3 class="text-xl font-semibold text-vicmad-blue mb-3">Residential Cleaning</h3>
+                            <p class="text-gray-600">
+                                Regular scheduled cleaning for houses and apartments, ensuring a fresh, healthy living space.
+                            </p>
+                        </div>
+                    </div>
+                    
+                </div>
+                
+                <!-- Detailed content block --><div class="mt-20 max-w-2xl mx-auto px-4 sm:px-6 lg:px-8 fade-in-up">
+                    <h3 class="text-3xl font-bold text-vicmad-teal mb-4 text-center">VICMAD: Excellence in Every Clean</h3>
+                    <p class="text-gray-700 mb-6 text-lg text-center md:text-left">
+                        VICMAD Cleaning Services is built on a foundation of reliability, integrity, and exceptional quality. We understand that a clean environment is critical for health, productivity, and peace of mind. Our extensive range of services ensures that whether you run a large industrial facility or need routine residential care, we have a precise, effective solution tailored just for you. We utilize the latest equipment and prioritize eco-friendly, non-toxic products to deliver a deep, safe clean every time.
+                    </p>
+
+                    <h4 class="text-xl font-semibold text-vicmad-blue mt-8 mb-3 text-center md:text-left">Our Service Promise: Deeper Understanding, Better Results</h4>
+                    <p class="text-gray-700 mb-4 text-center md:text-left">
+                        For commercial and industrial clients, we focus on detailed maintenance schedules, specialized equipment sanitization, and regulatory compliance. Our Adhoc Deep Cleaning is perfect for post-construction, move-in/out, or seasonal overhauls, reaching every corner and surface. This commitment to detail, from Hygiene Services to managing your Entrance Matts and Garden Services, means you only need one trusted partner for all your property maintenance needs, allowing you to focus on your core business.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- 3. Why Choose Us (Features) --><section id="about" class="py-16 md:py-24 bg-vicmad-light">
+            <!-- Constrained to max-w-2xl for alignment with Contact Form --><div class="max-w-2xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="space-y-8"> 
+                    <div class="mb-12 fade-in-up"> 
+                        <h2 class="text-3xl font-bold text-vicmad-blue mb-4">Why Choose VICMAD?</h2>
+                        <p class="text-gray-600 text-lg mb-6">
+                            VICMAD is a 100% locally-owned and operated cleaning service committed to raising the standard of cleanliness in the community. We don't just clean spaces; we invest in long-term relationships through transparent pricing and unmatched service quality. Choosing us means choosing a partner dedicated to maintaining your perfect environment with consistency and care.
+                        </p>
+                        <a href="#services" class="text-vicmad-teal font-semibold hover:underline">
+                            Explore All Services &rarr;
+                        </a>
+                    </div>
+
+                    <div class="space-y-8">
+                        <!-- Feature 1 --><div class="flex items-start fade-in-up">
+                            <div class="flex-shrink-0 p-3 bg-vicmad-blue rounded-full text-white shadow-md">
+                                <i data-lucide="check-check" class="w-6 h-6"></i>
+                            </div>
+                            <div class="ml-4">
+                                <h3 class="text-xl font-semibold text-vicmad-blue">Vetted & Trained Professionals</h3>
+                                <p class="text-gray-600">Our team is fully insured, background-checked, and trained in the latest cleaning techniques.</p>
+                            </div>
+                        </div>
+
+                        <!-- Feature 2 --><div class="flex items-start fade-in-up">
+                            <div class="flex-shrink-0 p-3 bg-vicmad-blue rounded-full text-white shadow-md">
+                                <i data-lucide="leaf" class="w-6 h-6"></i>
+                            </div>
+                            <div class="ml-4">
+                                <h3 class="text-xl font-semibold text-vicmad-blue">Eco-Friendly Solutions</h3>
+                                <p class="text-gray-600">We prioritize the health of your family and the planet by using non-toxic, sustainable products.</p>
+                            </div>
+                        </div>
+
+                        <!-- Feature 3 --><div class="flex items-start fade-in-up">
+                            <div class="flex-shrink-0 p-3 bg-vicmad-blue rounded-full text-white shadow-md">
+                                <i data-lucide="heart" class="w-6 h-6"></i>
+                            </div>
+                            <div class="ml-4">
+                                <h3 class="text-xl font-semibold text-vicmad-blue">100% Satisfaction Guarantee</h3>
+                                <p class="text-gray-600">If you're not completely happy, we'll return and re-clean the area for free—no questions asked.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 4. Testimonial Section (Expanded) --><section class="py-16 md:py-24 bg-vicmad-blue">
+            <!-- Constrained to max-w-2xl for alignment with Contact Form. Layout changed to stack. --><div class="max-w-2xl mx-auto px-4 sm:px-6 lg:px-8">
+                <h2 class="text-3xl font-bold text-center text-white mb-12 fade-in-up">What Our Clients Say</h2>
+                
+                <div class="grid gap-8">
+                    <!-- Testimonial Card 1 (Staggered Animation) --><div class="p-8 bg-white rounded-xl shadow-xl border border-vicmad-teal/50 staggered-item fade-in-up-rotate">
+                        <i data-lucide="quote" class="w-8 h-8 mb-4 text-vicmad-teal"></i>
+                        <blockquote class="text-gray-700 italic mb-4">
+                            "VICMAD turned my house into a home again. The attention to detail was incredible, especially the kitchen. Highly professional and truly reliable. I've signed up for weekly service!"
+                        </blockquote>
+                        <cite class="block text-sm font-semibold text-vicmad-blue">— Sarah M., Residential Client</cite>
+                    </div>
+
+                    <!-- Testimonial Card 2 (Staggered Animation) --><div class="p-8 bg-white rounded-xl shadow-xl border border-vicmad-teal/50 staggered-item fade-in-up-rotate">
+                        <i data-lucide="quote" class="w-8 h-8 mb-4 text-vicmad-teal"></i>
+                        <blockquote class="text-gray-700 italic mb-4">
+                            "Our office has never looked better. The team handles everything quickly and discreetly after hours. It makes a huge difference in our professional environment."
+                        </blockquote>
+                        <cite class="block text-sm font-semibold text-vicmad-blue">— David P., Commercial Manager</cite>
+                    </div>
+                </div>
+                
+                <!-- New Row for Mobile/Tablet --><div class="mt-8 grid gap-8">
+                    <!-- Testimonial Card 3 (Staggered Animation) --><div class="p-8 bg-white rounded-xl shadow-xl border border-vicmad-teal/50 staggered-item fade-in-up-rotate">
+                        <i data-lucide="quote" class="w-8 h-8 mb-4 text-vicmad-teal"></i>
+                        <blockquote class="text-gray-700 italic mb-4">
+                            "We used VICMAD for our move-out clean and they were extremely thorough. We got our entire deposit back! Couldn't recommend them enough."
+                        </blockquote>
+                        <cite class="block text-sm font-semibold text-vicmad-blue">— Alex R., Move-Out Client</cite>
+                    </div>
+                      <!-- Testimonial Card 4 (Staggered Animation) --><div class="p-8 bg-white rounded-xl shadow-xl border border-vicmad-teal/50 staggered-item fade-in-up-rotate">
+                        <i data-lucide="quote" class="w-8 h-8 mb-4 text-vicmad-teal"></i>
+                        <blockquote class="text-gray-700 italic mb-4">
+                            "I appreciate the use of eco-friendly products. My home is spotless, and I don't have to worry about harsh chemicals around my kids and pets. Thank you!"
+                        </blockquote>
+                        <cite class="block text-sm font-semibold text-vicmad-blue">— Jessica L., Eco-Conscious Client</cite>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- 4.5. FAQ Section (Accordion Style) --><section class="py-16 md:py-24 bg-white">
+            <!-- Constrained to max-w-2xl for alignment with Contact Form --><div class="max-w-2xl mx-auto px-4 sm:px-6 lg:px-8"> 
+                <h2 class="text-3xl font-bold text-center text-vicmad-teal mb-12 fade-in-up">Frequently Asked Questions</h2>
+                
+                <div class="space-y-4 fade-in-up">
+                    <!-- FAQ Item 1 --><div class="faq-item border border-gray-200 rounded-xl overflow-hidden shadow-md">
+                        <button type="button" class="faq-toggle w-full flex justify-between items-center p-5 font-semibold text-vicmad-blue bg-vicmad-light hover:bg-gray-100 transition duration-150 focus:outline-none">
+                            <span>Are your cleaning staff vetted and insured?</span>
+                            <i data-lucide="chevron-down" class="w-5 h-5 transition-transform duration-300 transform"></i>
+                        </button>
+                        <div class="faq-content p-5 text-gray-700 hidden border-t border-gray-200">
+                            Yes, absolutely. All of our professionals are rigorously vetted, background-checked, and fully insured for your peace of mind and security. We only hire trustworthy individuals.
+                        </div>
+                    </div>
+                    
+                    <!-- FAQ Item 2 --><div class="faq-item border border-gray-200 rounded-xl overflow-hidden shadow-md">
+                        <button type="button" class="faq-toggle w-full flex justify-between items-center p-5 font-semibold text-vicmad-blue bg-vicmad-light hover:bg-gray-100 transition duration-150 focus:outline-none">
+                            <span>Do I need to supply cleaning supplies or equipment?</span>
+                            <i data-lucide="chevron-down" class="w-5 h-5 transition-transform duration-300 transform"></i>
+                        </button>
+                        <div class="faq-content p-5 text-gray-700 hidden border-t border-gray-200">
+                            No, we bring all necessary professional-grade equipment and eco-friendly cleaning supplies. If you have specific, specialty products you would like us to use, please let us know when booking.
+                        </div>
+                    </div>
+
+                    <!-- FAQ Item 3 --><div class="faq-item border border-gray-200 rounded-xl overflow-hidden shadow-md">
+                        <button type="button" class="faq-toggle w-full flex justify-between items-center p-5 font-semibold text-vicmad-blue bg-vicmad-light hover:bg-gray-100 transition duration-150 focus:outline-none">
+                            <span>How do I cancel or reschedule an appointment?</span>
+                            <i data-lucide="chevron-down" class="w-5 h-5 transition-transform duration-300 transform"></i>
+                        </button>
+                        <div class="faq-content p-5 text-gray-700 hidden border-t border-gray-200">
+                            You can easily manage your booking by calling us at 078 338 8184 or emailing us at info@vicmadclean.com. We request at least 24 hours notice for any cancellations or changes.
+                        </div>
+                    </div>
+                    
+                    <!-- FAQ Item 4 --><div class="faq-item border border-gray-200 rounded-xl overflow-hidden shadow-md">
+                        <button type="button" class="faq-toggle w-full flex justify-between items-center p-5 font-semibold text-vicmad-blue bg-vicmad-light hover:bg-gray-100 transition duration-150 focus:outline-none">
+                            <span>What is included in a deep cleaning service?</span>
+                            <i data-lucide="chevron-down" class="w-5 h-5 transition-transform duration-300 transform"></i>
+                        </button>
+                        <div class="faq-content p-5 text-gray-700 hidden border-t border-gray-200">
+                            Our deep cleaning service includes everything in a standard clean, plus detailed attention to areas often missed, such as inside ovens/fridges (upon request), baseboards, door frames, and grout scrubbing.
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- 5. Get a Quote/Contact Form Section --><section id="quote" class="py-12 md:py-20 bg-vicmad-light">
+            <div class="max-w-2xl mx-auto px-4 sm:px-6 lg:px-8">
+                <h2 class="text-3xl font-bold text-center text-vicmad-teal mb-4 fade-in-up">Ready for a Sparkling Space?</h2>
+                <p class="text-center text-gray-600 mb-12 fade-in-up">
+                    Fill out the form below to receive a fast, free, and no-obligation quote tailored to your cleaning needs.
+                </p>
+
+                <!-- Mock Contact Form (UPDATED: action attribute) --><form id="contact-form" action="https://formspree.io/f/mgvpjgre" method="POST" class="space-y-6 p-8 bg-white rounded-2xl shadow-xl fade-in-up">
+                    <div>
+                        <label for="name" class="block text-sm font-medium text-vicmad-blue">Full Name</label>
+                        <input type="text" id="name" name="name" required class="mt-1 block w-full px-4 py-2 border border-gray-300 rounded-lg shadow-sm focus:ring-vicmad-teal focus:border-vicmad-teal">
+                    </div>
+                    <div>
+                        <label for="email" class="block text-sm font-medium text-vicmad-blue">Email Address</label>
+                        <input type="email" id="email" name="email" required class="mt-1 block w-full px-4 py-2 border border-gray-300 rounded-lg shadow-sm focus:ring-vicmad-teal focus:border-vicmad-teal">
+                    </div>
+                    <div>
+                        <label for="service_type" class="block text-sm font-medium text-vicmad-blue">Type of Service</label>
+                        <select id="service_type" name="service_type" required class="mt-1 block w-full px-4 py-2 border border-gray-300 rounded-lg shadow-sm focus:ring-vicmad-teal focus:border-vicmad-teal bg-white">
+                            <option value="">Select Service...</option>
+                            <!-- Updated list to match new services --><option value="commercial_industrial">Commercial + Industrial Cleaning</option>
+                            <option value="adhoc_deep">Adhoc Deep Cleaning</option>
+                            <option value="window_carpet">Window & Carpet Cleaning</option>
+                            <option value="hygiene_pest">Hygiene & Pest Control Services</option>
+                            <option value="matts">Entrance Matts</option>
+                            <option value="supplies">Cleaning Supplies</option>
+                            <option value="garden">Garden Services</option>
+                            <option value="residential">Residential Cleaning</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label for="message" class="block text-sm font-medium text-vicmad-blue">Details/Special Instructions</label>
+                        <textarea id="message" name="message" rows="4" class="mt-1 block w-full px-4 py-2 border border-gray-300 rounded-lg shadow-sm focus:ring-vicmad-teal focus:border-vicmad-teal"></textarea>
+                    </div>
+                    <div>
+                        <button type="submit" class="w-full flex justify-center py-3 px-4 border border-transparent rounded-full shadow-sm text-lg font-medium text-white bg-vicmad-blue hover:bg-vicmad-teal focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-vicmad-blue transition duration-300">
+                            Request My Free Quote
+                        </button>
+                    </div>
+                    <div id="form-message" class="text-center font-medium hidden"></div>
+                </form>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer --><footer id="contact" class="bg-vicmad-blue text-white py-12">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <!-- Simplified Footer Content: Removed grid structure and navigation/contact info -->
+
+            <div class="text-center text-sm text-gray-400">
+                <p>
+                    &copy; <span id="current-year"></span> VICMAD Cleaning Services. All rights reserved. | <a href="mailto:info@vicmad.co.za" class="hover:text-vicmad-teal">info@vicmad.co.za</a> | <a href="tel:0783388184" class="hover:text-vicmad-teal">078 338 8184</a>
+                </p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- WhatsApp Floating Button (Using custom image) --><a href="https://wa.me/27783388184" target="_blank" class="fixed bottom-6 right-6 z-[60]" aria-label="Chat with us on WhatsApp">
+        <!-- Replaced Lucide icon with your custom whatsapp.png --><img src="whatsapp.png" alt="WhatsApp Icon" class="w-12 h-12"> 
+    </a>
+
+    <!-- JavaScript for Mobile Menu, Form Handling, FAQ Accordion, and Animations --><script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // Set current year in footer
+            document.getElementById('current-year').textContent = new Date().getFullYear();
+
+            // Mobile Menu Toggle Logic
+            const menuButton = document.getElementById('mobile-menu-button');
+            const mobileMenu = document.getElementById('mobile-menu');
+
+            menuButton.addEventListener('click', () => {
+                mobileMenu.classList.toggle('hidden');
+                menuButton.querySelector('svg').outerHTML = mobileMenu.classList.contains('hidden')
+                    ? '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-menu"><line x1="4" x2="20" y1="12" y2="12"/><line x1="4" x2="20" y1="6" y2="6"/><line x1="4" x2="20" y1="18" y2="18"/></svg>'
+                    : '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-x"><path d="M18 6 6 18"/><path d="m6 6 12 12"/></svg>';
+            });
+
+            // Close mobile menu when a link is clicked
+            document.querySelectorAll('#mobile-menu a').forEach(link => {
+                link.addEventListener('click', () => {
+                    mobileMenu.classList.add('hidden');
+                    // Reset icon to menu
+                    menuButton.querySelector('svg').outerHTML = '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-menu"><line x1="4" x2="20" y1="12" y2="12"/><line x1="4" x2="20" y1="6" y2="6"/><line x1="4" x2="20" y1="18" y2="18"/></svg>';
+                });
+            });
+
+            // Mock Form Submission Handler REMOVED
+            // Now relying on Formspree for handling submissions.
+            // The success message will be handled by Formspree's redirect/success page.
+            const form = document.getElementById('contact-form');
+            const formMessage = document.getElementById('form-message');
+
+            form.addEventListener('submit', (e) => {
+                // Prevent default submission to show custom message temporarily
+                // Since Formspree redirects, this won't be visible long, but it adds polish.
+                
+                // Remove the old mock submission logic
+                /* e.preventDefault();
+                formMessage.classList.remove('hidden', 'text-red-600');
+                formMessage.classList.add('text-vicmad-teal');
+                formMessage.innerHTML = 'Thank you! Your quote request has been received. We will contact you shortly.';
+                form.reset();
+                setTimeout(() => { formMessage.classList.add('hidden'); }, 5000);
+                */
+
+                // Formspree is being used, so simply allow the default submit behavior (which is fine since we removed the preventDefault)
+                // However, let's keep the client-side validation clear and remove the old client-side message display logic.
+                
+                // For demonstration, we'll keep a basic confirmation display before redirecting:
+                // We'll let the submission happen, so the user sees the Formspree success page.
+                
+                // If you want to show a message *without* redirecting (for debugging/mocking):
+                // e.preventDefault();
+                // formMessage.classList.remove('hidden', 'text-red-600');
+                // formMessage.classList.add('text-vicmad-teal');
+                // formMessage.innerHTML = 'Submitting... You will be redirected if successful.';
+                
+            });
+            
+            // FAQ Accordion Logic
+            document.querySelectorAll('.faq-toggle').forEach(button => {
+                button.addEventListener('click', () => {
+                    const content = button.nextElementSibling;
+                    const icon = button.querySelector('[data-lucide="chevron-down"]');
+                    
+                    // Close all other open FAQs
+                    document.querySelectorAll('.faq-content').forEach(otherContent => {
+                        if (otherContent !== content && !otherContent.classList.contains('hidden')) {
+                            otherContent.classList.add('hidden');
+                            // Use the same logic to find and rotate the icon back on others
+                            const otherIcon = otherContent.previousElementSibling.querySelector('[data-lucide="chevron-down"]');
+                            if (otherIcon) {
+                                otherIcon.classList.remove('rotate-180');
+                            }
+                        }
+                    });
+
+                    // Toggle current FAQ
+                    content.classList.toggle('hidden');
+                    icon.classList.toggle('rotate-180');
+                });
+            });
+
+            /* --- Intersection Observer Animation Logic (Enhanced) --- */
+
+            // Select all elements for standard fade-in
+            const standardAnimations = document.querySelectorAll('.fade-in-up');
+            // Select all items that should have a staggered effect (Service Cards, Testimonial Cards)
+            const staggeredItems = document.querySelectorAll('.staggered-item');
+
+            // Generic Observer Function
+            const createObserver = (elements, delayMultiplier = 0) => {
+                const observer = new IntersectionObserver((entries, observer) => {
+                    entries.forEach(entry => {
+                        if (entry.isIntersecting) {
+                            // Find the index of the element within its specific collection
+                            const index = Array.from(elements).indexOf(entry.target);
+                            // Set a small delay based on the index (e.g., 100ms per item)
+                            const delay = index * delayMultiplier; 
+
+                            setTimeout(() => {
+                                entry.target.classList.add('animate-active');
+                                observer.unobserve(entry.target);
+                            }, delay);
+                        }
+                    });
+                }, { threshold: 0.1 }); // Trigger when 10% of the element is visible
+
+                elements.forEach(element => {
+                    observer.observe(element);
+                });
+            };
+
+            // 1. Apply standard fade-in-up (no delay)
+            // Filter to only include items that aren't also staggered to avoid double processing
+            const nonStaggeredElements = Array.from(standardAnimations).filter(el => !el.classList.contains('staggered-item'));
+            createObserver(nonStaggeredElements, 0);
+
+            // 2. Apply staggered animation (100ms delay per item for the grid/cards)
+            createObserver(staggeredItems, 100);
+
+            // Re-render Lucide icons after DOM is loaded
+            // We no longer need to call createIcons if whatsapp.png is used instead of a lucide icon
+            // However, other icons like 'building', 'sparkles', etc. still need to be rendered.
+            if (typeof lucide !== 'undefined' && lucide.createIcons) {
+                lucide.createIcons();
+            }
+        });
+    </script>
+
+</body>
+</html>
